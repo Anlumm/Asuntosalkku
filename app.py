@@ -132,7 +132,7 @@ elif page == "Kasvusimulaattori":
     rahoituskulut_yht = korko_pankkilaina  # osakaslainat käsitellään myöhemmin kassavirrassa
 
     voitto_ennen_veroja = liikevoitto - rahoituskulut_yht
-    tuloverot = max(v oitto_ennen_veroja, 0.0) * (tax_pct / 100.0)
+    tuloverot = max(voitto_ennen_veroja, 0.0) * (tax_pct / 100.0)
     tilikauden_voitto = voitto_ennen_veroja - tuloverot
 
     # ------------- Kassavirta pankkilainalle -------------
