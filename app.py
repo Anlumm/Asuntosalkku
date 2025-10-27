@@ -1,5 +1,16 @@
 import streamlit as st
 
+import os
+
+# Kevyt salasanasuojaus: aseta salasana ympäristömuuttujaan APP_PASSWORD
+APP_PWD = os.getenv("APP_PASSWORD", "")
+
+if APP_PWD:
+    pw = st.text_input("Password", type="password", placeholder="Enter password")
+    if pw != APP_PWD:
+        st.stop()
+
+
 st.set_page_config(page_title="Asuntosalkku", layout="wide")
 
 st.title("Asuntosalkku")
