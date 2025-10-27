@@ -62,23 +62,25 @@ elif page == "Kasvusimulaattori":
     st.subheader("Kasvusimulaattori")
 
     # ------------------ YLÄRIVI: syötteet ------------------
-    colA, colB, colC, colD, colE = st.columns([1.2, 1.2, 1.2, 1.2, 1.6])
+    colA, colB, colC, colD, colE, colF = st.columns([1.1, 1.1, 1.1, 1.1, 1.1, 1.4])
 
     with colA:
         base_loan = st.number_input("Lainan lähtömäärä (€)", min_value=0.0, value=346_835.0, step=1_000.0, format="%.2f")
 
     with colB:
-        growth = st.select_slider("Lainan kasvukerroin", options=[1.3, 1.4, 1.5, 1.6, 1.7], value=1.5)
+        growth = st.radio("Lainan kasvukerroin", [1.3, 1.4, 1.5, 1.6, 1.7], index=2, horizontal=True)
 
     with colC:
-        year = st.selectbox("Vuosi", [2025, 2026, 2027, 2028, 2029, 2030], index=0)
+        year = st.radio("Vuosi", [2025, 2026, 2027, 2028, 2029, 2030], index=0, horizontal=True)
 
     with colD:
         interest_pct = st.number_input("Korko (vuosi, %)", min_value=0.0, max_value=20.0, value=4.4, step=0.1, format="%.2f")
         interest = interest_pct / 100.0
 
     with colE:
-        term_years = st.number_input("Laina-aika (vuotta)", min_value=1, max_value=40, value=15, step=1)
+    	term_years = st.number_input("Laina-aika (vuotta)", min_value=1, max_value=40, value=15, step=1)
+
+    with colF:
         occ_pct = st.slider("Vuokrausaste (%)", min_value=0, max_value=100, value=100, step=1)
         tax_pct = st.slider("Tuloveroprosentti (%)", min_value=0, max_value=40, value=20, step=1)
         osakaslainat_lyh_korko = st.number_input("Lainanlyhennys ja korkokulut (osakaslainat) €/v", min_value=0.0, value=622.50, step=50.0, format="%.2f")
